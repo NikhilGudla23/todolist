@@ -1,0 +1,9 @@
+streamlit
+streamlit-option-menu
+pandas
+numpy
+plotly
+Pillow
+python-dateutil
+bcrypt
+streamlit-autorefresh

@@ -1,0 +1,227 @@
+/* Import Google Fonts Poppins & Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Default variables (Futuristic Void Dark theme as baseline fallback) */
+:root {
+    --bg-color: #05070c;
+    --card-bg: rgba(13, 18, 33, 0.75);
+    --text-color: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border-color: rgba(99, 102, 241, 0.15);
+    --shadow-color: rgba(0, 0, 0, 0.55);
+    --primary-color: #6366f1;
+    --accent-color: #a78bfa;
+}
+
+/* Light Theme overrides */
+.theme-light {
+    --bg-color: #f3f4f6;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --text-color: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --primary-color: #3b82f6;
+    --accent-color: #6366f1;
+}
+
+/* Hide standard Streamlit elements */
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+.stDeployButton {display:none;}
+[data-testid="stSidebarNav"] {display: none !important;}
+
+/* Global Styles */
+html, body, [data-testid="stAppViewContainer"] {
+    font-family: 'Inter', 'Poppins', sans-serif;
+}
+
+/* Glassmorphism Card base with Neon glowing border on hover */
+.glass-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.15);
+}
+
+/* Gradient Stat Widgets with Neon Glows */
+.stat-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-widget {
+    border-radius: 16px;
+    padding: 1.25rem;
+    color: white;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-widget::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+
+.stat-widget:hover::after {
+    left: 120%;
+}
+
+.stat-widget.total {
+    background: linear-gradient(135deg, #8b5cf6 0%, #4c1d95 100%);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.25);
+}
+.stat-widget.completed {
+    background: linear-gradient(135deg, #10b981 0%, #064e3b 100%);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+}
+.stat-widget.pending {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
+}
+.stat-widget.deleted {
+    background: linear-gradient(135deg, #f43f5e 0%, #881337 100%);
+    box-shadow: 0 0 15px rgba(244, 63, 94, 0.25);
+}
+.stat-widget.pct {
+    background: linear-gradient(135deg, #f59e0b 0%, #78350f 100%);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
+}
+
+.stat-widget-num {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0.25rem;
+}
+.stat-widget-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+/* Priority Card Neon Highlights */
+.priority-high-border {
+    border-left: 5px solid #ff0055;
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.15);
+}
+.priority-medium-border {
+    border-left: 5px solid #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+}
+.priority-low-border {
+    border-left: 5px solid #39ff14;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.15);
+}
+
+/* Custom badges */
+.badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.badge-high {
+    background-color: rgba(255, 0, 85, 0.1);
+    color: #ff0055;
+    border-color: rgba(255, 0, 85, 0.25);
+}
+.badge-medium {
+    background-color: rgba(0, 240, 255, 0.1);
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.25);
+}
+.badge-low {
+    background-color: rgba(57, 255, 20, 0.1);
+    color: #39ff14;
+    border-color: rgba(57, 255, 20, 0.25);
+}
+
+.badge-category {
+    background-color: rgba(167, 139, 250, 0.1);
+    color: #a78bfa;
+    border-color: rgba(167, 139, 250, 0.25);
+}
+
+/* Empty States */
+.empty-state-card {
+    text-align: center;
+    padding: 2.5rem;
+    background: var(--card-bg);
+    border: 1px dashed rgba(99, 102, 241, 0.3);
+    border-radius: 16px;
+    color: var(--text-muted);
+}
+
+.empty-state-card h4 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Footer Section */
+.footer-text {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* Sidebar Branding Styles with Neon Glow */
+.sidebar-logo {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-logo h2 {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    background: linear-gradient(135deg, #a78bfa 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(99, 102, 241, 0.35);
+}
+
+/* Custom Level Badge */
+.level-badge {
+    background: linear-gradient(135deg, #00f0ff 0%, #6366f1 100%);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+    display: inline-block;
+}
